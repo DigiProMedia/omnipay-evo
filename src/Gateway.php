@@ -1,14 +1,9 @@
 <?php
 
-namespace Pedanticantic\Evo;
+namespace Omnipay\Evo;
 
 use Omnipay\Common\AbstractGateway;
 
-/**
- * Evo Gateway
- *
- * @link https://www.evo.com/developersarea.php
- */
 class Gateway extends AbstractGateway
 {
     public function getName()
@@ -62,16 +57,16 @@ class Gateway extends AbstractGateway
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest('\Pedanticantic\Evo\Message\PurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Evo\Message\PurchaseRequest', $parameters);
     }
 
     public function completePurchase(array $parameters = array())
     {
-        return $this->createRequest('\Pedanticantic\Evo\Message\CompletePurchaseRequest', $parameters);
+        return $this->createRequest('\Omnipay\Evo\Message\CompletePurchaseRequest', $parameters);
     }
 
     public function refund(array $parameters = array())
     {
-        return $this->createRequest('\Pedanticantic\Evo\Message\RefundRequest', $parameters);
+        return $this->createRequest('\Omnipay\Evo\Message\RefundRequest', $parameters);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pedanticantic\Evo\Message;
+namespace Omnipay\Evo\Message;
 
 use SimpleXMLElement;
 use Omnipay\Common\Message\AbstractRequest;

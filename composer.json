@@ -1,43 +1,53 @@
 {
-    "name": "pedanticantic/omnipay-evo",
-    "type": "library",
-    "description": "Evo driver for the Omnipay payment processing library",
-    "keywords": [
-        "evo",
-        "gateway",
-        "merchant",
-        "omnipay",
-        "pay",
-        "payment"
-    ],
-    "homepage": "https://github.com/pedanticantic/omnipay-evo",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Glenn Jenkins",
-            "email": "pedanticantic@gmail.com",
-            "role": "Developer"
-        }
-    ],
-    "autoload": {
-        "psr-4": { "Pedanticantic\\Evo\\" : "src/" }
-    },
-    "require": {
-        "omnipay/common": "~2.0",
-        "php": ">=5.4.0"
-    },
-    "require-dev": {
-        "guzzle/plugin-mock": "~3.1",
-        "mockery/mockery": "~0.8",
-        "omnipay/tests": "~2.0",
-        "phpunit/phpunit": "~3.7.16",
-        "squizlabs/php_codesniffer": "~1.4.4"
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.9.x-dev"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "digipro-media/omnipay-evo",
+  "type": "library",
+  "description": "Evo driver for the Omnipay payment processing library",
+  "keywords": [
+    "evo",
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment"
+  ],
+  "homepage": "https://github.com/DigiProMedia/omnipay-evo",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jason Hansen",
+      "email": "jason.a.hansen2gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/DigiProMedia/omnipay-evo.git"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Omnipay\\Evo\\": "src/"
+    }
+  },
+  "config": {
+    "store-auths": true,
+    "secure-http": false
+  },
+  "require": {
+    "omnipay/common": "~2.0",
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "guzzle/plugin-mock": "~3.1",
+    "mockery/mockery": "~0.8",
+    "richtor/omnipay-tests": "dev-master"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.9.x-dev"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
