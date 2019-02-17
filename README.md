@@ -16,7 +16,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "pedanticantic/omnipay-evo": "~2.0"
+        "digipro-media/omnipay-evo": "~2.0"
     }
 }
 ```

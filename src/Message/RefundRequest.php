@@ -13,14 +13,14 @@ class RefundRequest extends AbstractRequest
     protected $liveEndpoint = 'https://mars.transaction.evo.com/Transaction';
     protected $testEndpoint = 'https://testserver.evo.com/Transaction';
 
-    public function getMerchantId()
+    public function getMerchantProfileId()
     {
-        return $this->getParameter('merchantId');
+        return $this->getParameter('merchantProfileId');
     }
 
-    public function setMerchantId($value)
+    public function setMerchantProfileId($value)
     {
-        return $this->setParameter('merchantId', $value);
+        return $this->setParameter('merchantProfileId', $value);
     }
 
     public function getPassword()
@@ -39,7 +39,7 @@ class RefundRequest extends AbstractRequest
 
         $data = new SimpleXMLElement('<Request/>');
 
-        $data->Authentication->client = $this->getMerchantId();
+        $data->Authentication->client = $this->getMerchantProfileId();
         $data->Authentication->password = $this->getPassword();
 
         $data->Transaction->TxnDetails->amount = $this->getAmount();

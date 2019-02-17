@@ -9,42 +9,36 @@ use Omnipay\Common\Message\RequestInterface;
 /**
  * Evo Response
  */
-class Response extends AbstractResponse implements RedirectResponseInterface
+class SoapErrorResponse extends AbstractResponse implements RedirectResponseInterface
 {
     /**
      * @var Omnipay\Evo\Message\PurchaseRequest $request The purchase request object.
      */
     protected $request;
     
-    public function __construct($request, $data)
+    public function __construct($error, $data)
     {
-        /*
-         * 'Transaction ID' => $resp->getTransactionId(),
-           'Transaction Status' => $resp->getStatus(),
-           'Transaction State' => $resp->getTransactionState(),
-         * */
-
         $this->data = $data;
-        $this->request = $request;
+        $this->error = $error;
     }
 
     public function isSuccessful()
     {
-        return $this->request->getStatusCode() === '1';
+        return false;
     }
 
     public function getCode()
     {
-        return $this->request->getStatusCode();
+        return $this->error->faultcode;
     }
 
     public function getMessage()
     {
-        return $this->request->getStatusMessage();
+        return $this->error->getMessage();
     }
 
     public function getTransactionReference() {
-        return $this->request->getTransactionId();
+        return null;
     }
 
     public function getRedirectUrl()
