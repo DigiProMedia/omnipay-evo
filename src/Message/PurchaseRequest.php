@@ -48,9 +48,8 @@ class PurchaseRequest extends AbstractRequest
 
             $cardSecurityData = new CardSecurityData();
             $cardSecurityData->setCVData($card->getCvv());
-            //TODO: Get CVV working
-            //$cardSecurityData->setCVDataProvided($CVDataProvided)
-            //$tenderData->setCardSecurityData($cardSecurityData);
+            $cardSecurityData->setCVDataProvided(\EvoSnap\CWS\TransactionProcessing\CVDataProvided::Provided);
+            $tenderData->setCardSecurityData($cardSecurityData);
 
             $transaction = new \EvoSnap\CWS\TransactionProcessing\BankcardTransaction();
             $transaction->setTransactionData($transactionData);
