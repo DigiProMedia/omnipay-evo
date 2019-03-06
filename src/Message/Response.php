@@ -14,9 +14,9 @@ class Response extends AbstractResponse implements RedirectResponseInterface
     /**
      * @var Omnipay\Evo\Message\PurchaseRequest $request The purchase request object.
      */
-    protected $request;
+    protected $response;
     
-    public function __construct($request, $data)
+    public function __construct($response, $data)
     {
         /*
          * 'Transaction ID' => $resp->getTransactionId(),
@@ -25,26 +25,30 @@ class Response extends AbstractResponse implements RedirectResponseInterface
          * */
 
         $this->data = $data;
-        $this->request = $request;
+        $this->response = $response;
     }
 
     public function isSuccessful()
     {
-        return $this->request->getStatusCode() === '1';
+        return $this->response->getStatusCode() === '1';
     }
 
     public function getCode()
     {
-        return $this->request->getStatusCode();
+        return $this->response->getStatusCode();
     }
 
     public function getMessage()
     {
-        return $this->request->getStatusMessage();
+        return $this->response->getStatusMessage();
     }
 
     public function getTransactionReference() {
-        return $this->request->getTransactionId();
+        return $this->response->getTransactionId();
+    }
+
+    public function getSavedCardReference() {
+        return $this->response->getPaymentAccountDataToken();
     }
 
     public function getRedirectUrl()

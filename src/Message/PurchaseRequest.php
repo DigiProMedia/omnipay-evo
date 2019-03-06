@@ -39,17 +39,22 @@ class PurchaseRequest extends AbstractRequest
             $transactionData->setOrderNumber($data['orderId']);
             $transactionData->setSignatureCaptured(false);
 
-            $cardData = new \EvoSnap\CWS\TransactionProcessing\CardData($card->getNumber());
-            $cardData->setExpire($card->getExpiryDate('my'));
-            $cardData->setCardholderName($card->getFirstName() . ' ' . $card->getLastName());
-
             $tenderData = new \EvoSnap\CWS\TransactionProcessing\BankcardTenderData();
-            $tenderData->setCardData($cardData);
 
-            $cardSecurityData = new CardSecurityData();
-            $cardSecurityData->setCVData($card->getCvv());
-            $cardSecurityData->setCVDataProvided(\EvoSnap\CWS\TransactionProcessing\CVDataProvided::Provided);
-            $tenderData->setCardSecurityData($cardSecurityData);
+            if($this->getCardReference() !== null){
+                $tenderData->setPaymentAccountDataToken($this->getCardReference());
+            } else {
+                $cardData = new \EvoSnap\CWS\TransactionProcessing\CardData($card->getNumber());
+                $cardData->setExpire($card->getExpiryDate('my'));
+                $cardData->setCardholderName($card->getFirstName() . ' ' . $card->getLastName());
+                $tenderData->setCardData($cardData);
+
+                $cardSecurityData = new CardSecurityData();
+                $cardSecurityData->setCVData($card->getCvv());
+                $cardSecurityData->setCVDataProvided(\EvoSnap\CWS\TransactionProcessing\CVDataProvided::Provided);
+                $tenderData->setCardSecurityData($cardSecurityData);
+            }
+
 
             $transaction = new \EvoSnap\CWS\TransactionProcessing\BankcardTransaction();
             $transaction->setTransactionData($transactionData);

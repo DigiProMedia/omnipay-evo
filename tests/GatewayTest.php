@@ -35,6 +35,7 @@ class GatewayTest extends GatewayTestCase
     {
         $response = $this->gateway->purchase($this->optionsWithAmount)->send();
         $this->verifyPurchaseResult($response);
+        return $response->getSavedCardReference();
     }
 
 
@@ -43,8 +44,7 @@ class GatewayTest extends GatewayTestCase
         $options = [
            'isLoggingEnabled' => true,
            'amount' => 10.00,
-           'cardReference' => $this->testCreateCardSuccess(),
-           'cvv' => 101
+           'cardReference' => $this->testPurchaseSuccess()
         ];
         $response = $this->gateway->purchase($options)->send();
         $this->verifyPurchaseResult($response);
@@ -62,7 +62,10 @@ class GatewayTest extends GatewayTestCase
 
     public function testRefundSuccess()
     {
-        $response = $this->gateway->refund($this->optionsWithAmount)->send();
+        $request = [
+           'transactionId' => $this->testPurchaseSuccess()
+        ];
+        $response = $this->gateway->refund($request)->send();
         $this->assertInstanceOf(Message\CreditCard\CaptureResponse::class, $response);
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());

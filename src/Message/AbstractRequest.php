@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Omnipay\Evo\Message;
 
 
-use Omnipay\Common\CreditCard;
 use Omnipay\Common\Message\ResponseInterface;
 
 class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
@@ -39,7 +38,18 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('password', $value);
     }
 
-    public function getMerchantType() {
+    public function getCardReference()
+    {
+        return $this->getParameter('cardReference');
+    }
+
+    public function setCardReference($value)
+    {
+        return $this->setParameter('cardReference', $value);
+    }
+
+    public function getMerchantType()
+    {
         return $this->getTestMode() ? $this->testMerchantType : $this->liveMerchantType;
     }
 
@@ -50,36 +60,44 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         $this->setPendingUrl($value);
     }
 
-    public function setOkUrl($value) {
+    public function setOkUrl($value)
+    {
         return $this->setParameter('okUrl', $value);
     }
 
-    public function getOkUrl() {
+    public function getOkUrl()
+    {
         return $this->getParameter('okUrl');
     }
 
-    public function setFailUrl($value) {
+    public function setFailUrl($value)
+    {
         return $this->setParameter('failUrl', $value);
     }
 
-    public function getFailUrl() {
+    public function getFailUrl()
+    {
         return $this->getParameter('failUrl');
     }
 
-    public function setPendingUrl($value) {
+    public function setPendingUrl($value)
+    {
         return $this->setParameter('pendingUrl', $value);
     }
 
-    public function getPendingUrl() {
+    public function getPendingUrl()
+    {
         return $this->getParameter('pendingUrl');
     }
 
-    public function getConsumerName() {
+    public function getConsumerName()
+    {
         $card = $this->getParameter('card');
         return $card->getBillingFirstName();
     }
 
-    public function getConsumerSurname() {
+    public function getConsumerSurname()
+    {
         $card = $this->getParameter('card');
         return $card->getBillingLastName();
     }
@@ -97,7 +115,6 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
     public function getData()
     {
-
         return [
            'applicationProfileId' => $this->getUsername(),
            'merchantProfileId' => $this->getMerchantProfileId(),
@@ -105,7 +122,8 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
            'workflowId' => $this->getWorkflowId(),
            'orderId' => $this->getTransactionId(),
            'total' => $this->getAmount(),
-           'card' => $this->getCard()
+           'card' => $this->getCard(),
+           'paymentAccountDataToken' => $this->getCardReference()
         ];
 
     }
