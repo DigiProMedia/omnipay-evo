@@ -23,6 +23,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/Richtor/Evo-Soap.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/DigiProMedia/recurring-payments.git"
     }
   ],
   "autoload": {
@@ -38,7 +42,9 @@
     "omnipay/common": "~2.0",
     "php": ">=7.2",
     "snapsample/cwslib": "dev-master",
-    "ext-soap": "*"
+    "ext-soap": "*",
+    "richtor/recurring-payments": "dev-master",
+    "ext-json": "*"
   },
   "require-dev": {
     "guzzle/plugin-mock": "~3.1",

@@ -6,7 +6,7 @@ namespace Omnipay\Evo\Message;
 
 use Omnipay\Common\Message\ResponseInterface;
 
-class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
+abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 {
     public function getMerchantProfileId()
     {
@@ -113,6 +113,16 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
         return $this->setParameter('workflowId', $value);
     }
 
+    public function getRecurringReference()
+    {
+        return $this->getParameter('recurringReference');
+    }
+
+    public function setRecurringReference($value)
+    {
+        return $this->setParameter('recurringReference', $value);
+    }
+
     public function getData()
     {
         return [
@@ -131,10 +141,8 @@ class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /**
      * Send the request with specified data
      *
-     * @param  mixed $data The data to send
+     * @param mixed $data The data to send
      * @return ResponseInterface
      */
-    public function sendData($data)
-    {
-    }
+    abstract public function sendData($data);
 }

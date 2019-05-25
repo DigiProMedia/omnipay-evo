@@ -74,6 +74,6 @@ class PurchaseRequest extends AbstractRequest
         } catch (\SoapFault $error) {
             return new SoapErrorResponse($error, $data);
         }
-        return new Response($resp, $data);
+        return new Response($this, $resp, $data);
     }
 }

@@ -16,7 +16,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface
      */
     protected $response;
     
-    public function __construct($response, $data)
+    public function __construct($request, $response, $data)
     {
         /*
          * 'Transaction ID' => $resp->getTransactionId(),
@@ -24,8 +24,9 @@ class Response extends AbstractResponse implements RedirectResponseInterface
            'Transaction State' => $resp->getTransactionState(),
          * */
 
-        $this->data = $data;
+        $this->request = $request;
         $this->response = $response;
+        $this->data = $data;
     }
 
     public function isSuccessful()
@@ -35,7 +36,7 @@ class Response extends AbstractResponse implements RedirectResponseInterface
 
     public function getCode()
     {
-        return $this->response->getStatusCode();
+        return $this->response->getStatusCode() ?? null;
     }
 
     public function getMessage()

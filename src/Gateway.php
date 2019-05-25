@@ -4,6 +4,7 @@ namespace Omnipay\Evo;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Evo\Message\PurchaseRequest;
+use Omnipay\Evo\Message\RecurringRequest;
 use Omnipay\Evo\Message\RefundRequest;
 
 class Gateway extends AbstractGateway
@@ -98,22 +99,14 @@ class Gateway extends AbstractGateway
         return $this->createRequest(RefundRequest::class, $parameters);
     }
 
-
-
-    /*public function __call($name, $arguments)
-    {
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface completeAuthorize(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface capture(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface completePurchase(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface void(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface createCard(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface updateCard(array $options = array())
-        // TODO: Implement @method \Omnipay\Common\Message\RequestInterface deleteCard(array $options = array())
-    }*/
-
-    function authorize(array $options = [])
+    public function authorize(array $options = [])
     {
         // TODO: Implement authorize() method.
+    }
+
+    public function createRecurring(array $parameters = [])
+    {
+        return $this->createRequest(RecurringRequest::class, $parameters);
     }
 
 }
