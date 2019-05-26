@@ -176,7 +176,7 @@ class GatewayTest extends GatewayTestCase
         static::assertTrue($response->isSuccessful());
         if($verifyCharged) {
             static::assertTrue($response->charged());
-            static::assertGreaterThan(0, $response->getTransactionReference());
+            static::assertNotNull($response->getTransactionReference());
         }
         static::assertGreaterThan(0, $response->getRecurringReference());
         return $response->getRecurringReference();
