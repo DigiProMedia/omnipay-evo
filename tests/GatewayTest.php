@@ -5,6 +5,7 @@ namespace Omnipay\Evo;
 include_once '../vendor/autoload.php';
 
 use Omnipay\Tests\GatewayTestCase;
+use RecurringPayment\RecurringPayment;
 
 class GatewayTest extends GatewayTestCase
 {
