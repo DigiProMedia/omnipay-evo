@@ -6,6 +6,7 @@ include_once '../vendor/autoload.php';
 
 use Omnipay\Tests\GatewayTestCase;
 use RecurringPayment\RecurringPayment;
+use RecurringPayment\Database;
 
 class GatewayTest extends GatewayTestCase
 {

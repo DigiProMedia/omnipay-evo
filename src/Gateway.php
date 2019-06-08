@@ -6,6 +6,7 @@ use Omnipay\Common\AbstractGateway;
 use Omnipay\Evo\Message\PurchaseRequest;
 use Omnipay\Evo\Message\RecurringRequest;
 use Omnipay\Evo\Message\RefundRequest;
+use Omnipay\Evo\Message\UpdateRecurringRequest;
 
 class Gateway extends AbstractGateway
 {
@@ -107,6 +108,11 @@ class Gateway extends AbstractGateway
     public function createRecurring(array $parameters = [])
     {
         return $this->createRequest(RecurringRequest::class, $parameters);
+    }
+
+    public function updateRecurring(array $parameters = [])
+    {
+        return $this->createRequest(UpdateRecurringRequest::class, $parameters);
     }
 
 }
