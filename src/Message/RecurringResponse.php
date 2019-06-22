@@ -40,14 +40,14 @@ class RecurringResponse extends Response implements ResponseInterface {
     }
 
     public function getRecurringReference() {
-        return $this->getData()['recurring_id'];
+        return $this->getData()['recurring_id'] ?? null;
     }
 
     public function getTransactionReference() {
-        return $this->getData()['transactionReference'];
+        return $this->getData()['transactionReference'] ?? null;
     }
 
     public function getSavedCardReference() {
-        return $this->request->getData()['card_reference'];
+        return $this->request->getData()['card_reference'] ?? null;
     }
 }
