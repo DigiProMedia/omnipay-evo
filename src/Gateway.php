@@ -3,6 +3,7 @@
 namespace Omnipay\Evo;
 
 use Omnipay\Common\AbstractGateway;
+use Omnipay\Evo\Message\DeleteRecurringRequest;
 use Omnipay\Evo\Message\PurchaseRequest;
 use Omnipay\Evo\Message\RecurringRequest;
 use Omnipay\Evo\Message\RefundRequest;
@@ -113,6 +114,11 @@ class Gateway extends AbstractGateway
     public function updateRecurring(array $parameters = [])
     {
         return $this->createRequest(UpdateRecurringRequest::class, $parameters);
+    }
+
+    public function deleteRecurring(array $parameters = [])
+    {
+        return $this->createRequest(DeleteRecurringRequest::class, $parameters);
     }
 
 }
